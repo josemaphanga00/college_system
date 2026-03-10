@@ -11,7 +11,7 @@ class User(AbstractUser):
         ADMIN = "ADMIN", "Admin"
         TEACHER = "TEACHER", "Teacher"
 
-    # Role field to distinguish Admin vs Teacher
+    # Admin vs Teacher
     role = models.CharField(
         max_length=20,
         choices=Role.choices,
@@ -20,11 +20,11 @@ class User(AbstractUser):
     )
 
     # Account & audit fields
-    is_active = models.BooleanField(default=True)
+    # is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # Helper methods for easy role checking
+    # Role Checker  
     def is_admin(self):
         return self.role == self.Role.ADMIN
 
